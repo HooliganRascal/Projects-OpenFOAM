@@ -1,0 +1,35 @@
+FoamFile
+{
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      epsilon;
+}
+
+dimensions      [0 2 -3 0 0 0 0];
+
+internalField   uniform 14.855; // to be adjusted
+
+boundaryField
+{
+    inlet
+    {
+        type            zeroGradient;
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+    upperWall
+    {
+        type            zeroGradient;
+    }
+    lowerWall
+    {
+        type            zeroGradient;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}
