@@ -1,0 +1,111 @@
+FoamFile
+{
+	format		ascii;
+	class		dictionary;
+	location	"system";
+	object		blockMeshDict;
+}
+
+convertToMeters 0.001; // milimeter
+
+vertices
+(
+	// Edge 1 behind
+	(0	0	-0.5)
+	(0	150	-0.5)
+	(0	300	-0.5)
+
+	// Edge 2 behind
+	(1000	0	-0.5)
+	(1000	150	-0.5)
+	(1000	300	-0.5)
+
+	// Edge 1 front
+	(0	0	0.5)
+	(0	150	0.5)
+	(0	300	0.5)
+
+	// Edge 2 front
+	(1000	0	0.5)
+	(1000	150	0.5)
+	(1000	300	0.5)
+);
+
+yGrading
+(
+	(0.2 0.3 10)
+	(0.6 0.4 1)
+	(0.2 0.3 0.1)
+);
+
+blocks
+(
+	hex (0 3 4 1 6 9 10 7)
+	(400 150 1)
+	simpleGrading (1 $yGrading 1)
+
+	hex (1 4 5 2 7 10 11 8)
+	(400 150 1)
+	simpleGrading (1 $yGrading 1)
+);
+
+boundary
+(
+	fuel_inlet
+	{
+		type patch;
+		faces
+		(
+			(0 1 7 6)
+		);
+	}
+
+	air_inlet
+	{
+		type patch;
+		faces
+		(
+			(1 2 8 7)
+		);
+	}
+
+	outlet
+	{
+		type patch;
+		faces
+		(
+			(3 9 10 4)
+			(4 10 11 5)
+		);
+	}
+
+	upperWall
+	{
+		type wall;
+		faces
+		(
+			(2 5 11 8)
+		);
+	}
+
+	lowerWall
+	{
+		type wall;
+		faces
+		(
+			(0 6 9 3)
+		);
+	}
+	
+	frontAndBack
+	{
+		type empty;
+		faces
+		(
+			(0 3 4 1)
+			(1 4 5 2)
+			(6 7 10 9)
+			(7 8 11 10)
+		);
+	}
+);

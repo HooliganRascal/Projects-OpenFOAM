@@ -1,0 +1,13 @@
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      combustionProperties;
+}
+
+combustionModel PaSR;
+
+PaSRCoeffs
+{
+    Cmix 1.0;
+}

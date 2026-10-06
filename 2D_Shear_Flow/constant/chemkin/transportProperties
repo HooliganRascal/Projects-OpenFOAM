@@ -1,0 +1,22 @@
+FoamFile
+{
+    format ascii;
+    class dictionary;
+    object transportProperties;
+}
+".*"
+{
+    transport
+    {
+        As 1.512e-06;
+        Ts 120;
+    }
+}
+CO2
+{
+    transport
+    {
+        As 1.572e-06;
+        Ts 240;
+    }
+}

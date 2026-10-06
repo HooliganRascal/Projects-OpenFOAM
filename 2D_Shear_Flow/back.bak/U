@@ -1,0 +1,46 @@
+FoamFile
+{
+    format      ascii;
+    class       volVectorField;
+    location    "0";
+    object      U;
+}
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (340 0 0);
+
+boundaryField
+{
+    fuel_inlet
+    {
+        type            fixedValue;
+        value           uniform (173 0 0); // gamma=1.02, R=48.81
+    }
+
+    air_inlet
+    {
+        type            fixedValue;
+        value           uniform (796 0 0); // gamma=1.30 R=287
+    }
+
+    outlet
+    {
+        type            zeroGradient;
+    }
+
+    upperWall
+    {
+        type            noSlip;
+    }
+
+    lowerWall
+    {
+        type            noSlip;
+    }
+
+    frontAndBack
+    {
+        type            empty;
+    }
+}

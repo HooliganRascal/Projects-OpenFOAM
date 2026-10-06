@@ -1,0 +1,14 @@
+reactions
+{
+    un-named-reaction-0
+    {
+        type            irreversibleArrhenius;
+        reaction        "NC12H26 + 18.5O2^1 = 12CO2 + 13H2O";
+        A               1000000000;
+        beta            0;
+        Ta              15095.7371651;
+    }
+}
+Tlow            200;
+Thigh           6000;
+

@@ -1,0 +1,14 @@
+! DEMONSTRATION ONLY: uncalibrated one-step replacement, NOT LLNL kinetics.
+! A=1e12 cm3/mol/s, beta=0, Ea=30000 cal/mol; first order each in fuel and O2.
+! Suitable for input/workflow testing, not predictive combustion results.
+ELEMENTS
+C H O N
+END
+SPECIES
+NC12H26 O2 N2 CO2 H2O
+END
+REACTIONS CAL/MOLE MOLES
+NC12H26 + 18.5 O2 => 12 CO2 + 13 H2O   1.000E12 0.0 30000.0
+FORD / NC12H26 1.0 /
+FORD / O2 1.0 /
+END

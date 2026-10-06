@@ -1,0 +1,48 @@
+FoamFile
+{
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      epsilon;
+}
+
+dimensions      [0 2 -3 0 0 0 0];
+
+internalField   uniform 14.855;
+
+boundaryField
+{
+    fuel_inlet
+    {
+        type            fixedValue;
+        value           uniform 14.855;
+    }
+
+    air_inlet
+    {
+        type            fixedValue;
+        value           uniform 14.855;
+    }
+
+    outlet
+    {
+        type            zeroGradient;
+    }
+
+    upperWall
+    {
+        type  		epsilonWallFunction;
+    	value 		uniform 14.855;
+    }
+
+    lowerWall
+    {
+        type            epsilonWallFunction;
+        value           uniform 14.855;
+    }
+
+    frontAndBack
+    {
+        type            empty;
+    }
+}
