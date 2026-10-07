@@ -9,7 +9,7 @@
 # numberOfSubdomains	8;
 # method scotch;
 
-.PHONY: pre ready run runall read recon show clean restore
+.PHONY: pre ready run runall readrun recon readrec show clean restore
 
 NP ?= 8
 
@@ -22,20 +22,23 @@ ready:
 	decomposePar
 
 run:
-	mpirun -np $(NP) foamRun -parallel > log.foamRun 2>&1
+	nohup mpirun -np $(NP) foamRun -parallel > log.foamRun 2>&1 &
 
 runall:
 	blockMesh
 	checkMesh
 	setFields -time 0
 	decomposePar
-	mpirun -np $(NP) foamRun -parallel > log.foamRun 2>&1
+	nohup mpirun -np $(NP) foamRun -parallel > log.foamRun 2>&1 &
 
-read:
+readrun:
 	tail -f log.foamRun
 
 recon:
-	reconstructPar
+	nohup reconstructPar > log.reconstruct 2>&1 &
+
+readrec:
+	tail -f log.reconstruct
 
 show:
 	paraFoam
